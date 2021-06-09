@@ -9,17 +9,19 @@ pipeline{
             }
 
         }
-        stage('upload to nexus'){
+        stage('Docker Build Image'){
             steps{
-                     nexusArtifactUploader artifacts: [[artifactId: 'myweb', classifier: '', file: 'target/myweb-0.0.1-SNAPSHOT.war', type: 'war']],
-                         credentialsId: 'nexus3',
-                         groupId: 'in.javahome',
-                         nexusUrl: '13.211.131.92:8081',
-                         nexusVersion: 'nexus3',
-                         protocol: 'http',
-                         repository: 'Mohan-snapshot', 
-                         version: '0.0.1-SNAPSHOT'
+                sh "docker build -t nandireddy123/reddy1:v1 ."
+
             }
         }
+
+        stage("dev -deploy){
+            steps{
+                echo "deplot to dev"
+            }
+        }
+      
+        
     }
 }
