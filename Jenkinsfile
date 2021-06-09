@@ -18,10 +18,10 @@ pipeline{
         }
         stage("push to docker hub"){
         steps{
-        withCredentials([string(credentialsId: '', variable: 'dockerpwd')]) {
-        sh "docker login -u nandireddy123 -p ${dockerpwd}"
+      withCredentials([string(credentialsId: '', variable: 'dockerPwd')]) {
+         sh "docker login -u nandireddy123 -p ${dockerPwd}"
         sh "docker push nandireddy123/myweb:v1"      
-}
+      }
             }
         }
 
