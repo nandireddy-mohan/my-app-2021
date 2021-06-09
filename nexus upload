@@ -1,0 +1,40 @@
+pipeline{
+    agent any
+    stages{
+        stage(git pull/clone){
+            steps{
+                git url https://github.com/nandireddy-mohan/my-app-2021
+            }
+        }
+        tools{
+            Maven 3
+
+        }
+        stage(maven build){
+            steps{
+                mvn clean package
+            }
+        }
+        
+        
+        stage(upload to nexus){
+            steps {
+                nexusArtifactUploader artifacts:
+                 [
+                         [artifactId: 'myweb',
+                         classifier: '', 
+                         file: 'targer/myweb-0.0.1-war',
+                         type: 'war']
+                         ],
+                         credentialsId: 'nexus3', 
+                         groupId: 'in.javahome',
+                         nexusUrl: 'http://13.211.131.92:8081/', 
+                         nexusVersion: 'nexus3',
+                         protocol: 'http',
+                         repository: 'Mohan-relase', 
+                         version: '0.0.1'
+
+            }
+        }
+    }
+}
