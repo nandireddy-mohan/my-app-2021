@@ -11,7 +11,7 @@ pipeline{
         }
         stage('Docker Build Image'){
             steps{
-                sh "docker build -t nandireddy123/reddy1:v1 ."
+                sh "docker build -t nandireddy123/myweb:v1 ."
 
 
             }
@@ -20,7 +20,7 @@ pipeline{
         steps{
         withCredentials([string(credentialsId: '', variable: 'dockerpwd')]) {
         sh "docker login -u nandireddy123 -p ${dockerpwd}"
-        sh "docker push nandireddy123/reddy:v1"      
+        sh "docker push nandireddy123/myweb:v1"      
 }
             }
         }
