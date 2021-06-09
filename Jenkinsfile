@@ -9,7 +9,7 @@ pipeline{
             }
 
         }
-        stage(upload to nexus){
+        stage('upload to nexus'){
             steps{
                      nexusArtifactUploader artifacts: [[artifactId: 'myweb', classifier: '', file: 'target/myweb', type: 'war']],
                      credentialsId: 'nexus3',
