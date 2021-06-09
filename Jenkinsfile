@@ -17,7 +17,7 @@ pipeline{
                      nexusUrl: '13.211.131.92:8081',
                      nexusVersion: 'nexus3',
                      protocol: 'http',
-                      repository: 'Mohan-release',
+                      repository: 'Mohan-snapshot',
                        version: '0.0.1-SNAPSHOT'
             }
         }
