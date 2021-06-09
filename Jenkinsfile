@@ -16,7 +16,7 @@ pipeline{
             }
         }
 
-        stage("dev -deploy){
+        stage("dev -deploy"){
             steps{
                 echo "deplot to dev"
             }
