@@ -11,16 +11,16 @@ pipeline{
         }
         stage('Docker Build Image'){
             steps{
-                sh "docker build -t nandireddy123/myweb:v1 ."
+                sh "docker build -t mohawebapp/myweb:v1 ."
 
 
             }
         }
         stage("push to docker hub"){
         steps{
-      withCredentials([string(credentialsId: '', variable: 'dockerPwd')]) {
-         sh "docker login -u nandireddy123 -p ${dockerPwd}"
-        sh "docker push nandireddy123/myweb:v1"      
+         withCredentials([string(credentialsId: 'Docker -Hub', variable: 'dockerpwd')]) {
+         sh "docker login -u nandireddy123 -p ${dockerpwd}"
+        sh "docker push mohawebapp/myweb:v1"      
       }
             }
         }
