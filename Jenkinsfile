@@ -11,7 +11,7 @@ pipeline{
         }
         stage('Docker Build Image'){
             steps{
-                sh "docker build -t mohawebapp/myweb:v1 ."
+                sh "docker build -t mohanwebapp/myweb:v1 ."
 
 
             }
@@ -19,8 +19,8 @@ pipeline{
         stage("push to docker hub"){
         steps{
          withCredentials([string(credentialsId: 'Docker -Hub', variable: 'dockerpwd')]) {
-         sh "docker login -u mohawebapp -p ${dockerpwd}"
-        sh "docker push mohawebapp/myweb:v1"      
+         sh "docker login -u mohanwebapp -p ${dockerpwd}"
+        sh "docker push mohanwebapp/myweb:v1"      
       }
             }
         }
